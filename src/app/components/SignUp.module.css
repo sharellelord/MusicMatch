@@ -1,0 +1,41 @@
+
+.signupCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #704a4a;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid white;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 1rem;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: #704a4a;
+  color: #fff;
+}
+
+.formInput::placeholder {
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  font-family: "Ranchers", sans-serif;
+}
+
+.signupButton {
+  background-color: #961f1f;
+  margin-top: 1.5rem;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Ranchers", sans-serif;
+ 
+}

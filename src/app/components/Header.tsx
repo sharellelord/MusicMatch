@@ -1,26 +1,21 @@
-"use client";
+import React from 'react';
+import styles from './Header.module.css';
 
-import Link from 'next/link';
 
-interface HeaderProps {
-  isLoggedIn: boolean;
-  handleLoginToggle: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ isLoggedIn, handleLoginToggle }) => {
+function Header() {
   return (
-    <header className="header">
-      <h1>Music Match</h1>
-      <nav>
-        <Link href="/">Home</Link>
-        <Link href="/add-recommendation">Add Recommendation</Link>
-      </nav>
-      {/* Login/Logout Button */}
-      <button onClick={handleLoginToggle} className="login-button">
-        {isLoggedIn ? 'Logout' : 'Login'}
-      </button>
+    <header className={styles.header}>
+      <div className={styles.logoBackground}>
+        <span className={styles.logo}>MM</span>
+      </div>
+      <h1 className={styles.appName}>MusicMatch</h1>
+      <div className={styles.menuIcon}>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+        <div className={styles.bar}></div>
+      </div>
     </header>
   );
-};
+}
 
 export default Header;
