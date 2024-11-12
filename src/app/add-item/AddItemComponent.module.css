@@ -1,8 +1,7 @@
 .create-playlist-container {
     background-color: #2c1d1d;
     height: 110vh;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     color: #ffffff;
     font-family: 'Arial', sans-serif;
   }
@@ -11,8 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: -20px;
-    margin-top: -20px;
+    margin: -20px 0;
   }
   
   .logo img {
@@ -23,7 +21,6 @@
   
   .header h1 {
     margin-left: 90px;
-  
     font-size: 60px;
     font-family: 'Brush Script MT', cursive;
     font-weight: lighter;
@@ -41,7 +38,6 @@
     color: #ffffff;
     padding: 10px 20px;
     cursor: pointer;
-    font-family: 'Arial', sans-serif;
     margin-right: 10px;
   }
   
@@ -64,60 +60,34 @@
     border: 3px solid white;
   }
   
-  .create-playlist h2 {
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
-    text-shadow: 
-      -1px -1px 0 #3b3b3b,  
-       1px -1px 0 #3b3b3b,
-      -1px  1px 0 #3b3b3b,
-       1px  1px 0 #3b3b3b;
-  }
-  
   .create-playlist2 {
     display: flex;
-    flex-direction: row;
-    justify-content: center; /* Align form and image to the left */
-    align-items: center; /* Align items to the top */
-    width: 100%; /* Ensure it takes full width */
-    flex-wrap: nowrap; /* Prevent wrapping of items */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
   }
   
   .form-group {
     margin-bottom: 15px;
-    width: 100%; /* Adjust width of form group to make room for the image */
+    width: 100%;
     padding-left: 20px;
     display: flex;
-    margin-left: 20px;
-    margin-right: 20px;
     flex-direction: column;
   }
   
   .form-group label {
-    display: block;
     margin-bottom: 5px;
     font-size: 18px;
-    font-family: 'Arial', sans-serif;
-    font-family: 'Arial', sans-serif;
     color: #ffffff;
-    text-shadow: 
-      -1px -1px 0 #3b3b3b,  
-       1px -1px 0 #3b3b3b,
-      -1px  1px 0 #3b3b3b,
-       1px  1px 0 #3b3b3b;
+    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
   }
   
-  .form-group input[type="text"], .form-group input[type="file"] {
+  .input-field {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 2px solid #e36464;
-  }
-  
-  .form-group input[type="file"] {
-    margin-bottom: 5px;
   }
   
   .start-here {
@@ -126,32 +96,24 @@
     display: block;
   }
   
-  button[type="submit"] {
-    display: flex;
+  .submit-button {
     background-color: #4a2b2b;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-family: 'Arial', sans-serif;
     border-radius: 10px;
     border: 2px solid white;
-    padding-left: 80px;
-    padding-right: 80px;
-    justify-self: center;
-    margin-left: 90px;
+    margin-top: 20px;
   }
   
-  button:hover {
+  .submit-button:hover {
     background-color: #3b1f1f;
   }
   
   .playlist-image {
-    width: 35%; /* Image takes 45% width */
-    justify-content: center;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 35%;
+    padding: 0 20px;
     margin-left: 120px;
   }
   
@@ -160,13 +122,3 @@
     border-radius: 10px;
   }
   
-  .create {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Center the "Create!" button */
-    margin-top: 20px; /* Space between form/image and button */
-  }
-  
-  .create button {
-    padding: 10px 20px;
-  }

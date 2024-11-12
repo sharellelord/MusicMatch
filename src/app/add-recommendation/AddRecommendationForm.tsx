@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import RecommendationCard from '@/app/components/RecommendationCard';
+import RecommendationCard from '@/app/add-recommendation/RecommendationCard';
 
 interface Recommendation {
   vibes: string;

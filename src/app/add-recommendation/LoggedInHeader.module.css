@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -20px 0;
+  }
+  
+  .logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+  }
+  
+  .header h1 {
+    margin-left: 90px;
+    font-size: 60px;
+    font-family: 'Brush Script MT', cursive;
+    font-weight: lighter;
+  }
+  
+  .userProfile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutButton {
+    background-color: #b25d5d;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .userImage {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  
