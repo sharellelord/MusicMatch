@@ -8,6 +8,7 @@ const AddRecommendationForm: React.FC = () => {
     vibes: '',
     genre: '',
     artist: '',
+    imageUrl: '',
     popularity: ''
   });
 
@@ -23,10 +24,11 @@ const AddRecommendationForm: React.FC = () => {
     console.log('Vibes:', formData.vibes);
     console.log('Genre:', formData.genre);
     console.log('Artist:', formData.artist);
+    console.log('imageUrl:', formData.imageUrl);
     console.log('Popularity:', formData.popularity);
     console.groupEnd();
 
-    setFormData({ vibes: '', genre: '', artist: '', popularity: '' });
+    setFormData({ vibes: '', genre: '', artist: '', imageUrl: '', popularity: '' });
   };
 
   return (
@@ -73,6 +75,15 @@ const AddRecommendationForm: React.FC = () => {
           min="1"
           max="10"
           required
+        />
+
+        <label htmlFor="imageUrl">image</label>
+        <input
+          type="text"
+          id="imageUrl"
+          name="image"
+          value={formData.imageUrl}
+          onChange={handleChange}
         />
 
         <button type="submit" className={styles['submit-button']}>Submit</button>
