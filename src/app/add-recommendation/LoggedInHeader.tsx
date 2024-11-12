@@ -11,6 +11,10 @@ const LoggedInHeader: React.FC = () => {
     router.push('/');
   };
 
+  const handleAddPlaylist = () => {
+    router.push('/add-item');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -18,7 +22,10 @@ const LoggedInHeader: React.FC = () => {
       </div>
       <h1>MusicMatch</h1>
       <div className={styles.userProfile}>
-        <button className={styles.logoutButton} onClick={handleLogout}>
+        <button className={styles.button} onClick={handleAddPlaylist}>
+          Add Playlist
+        </button>
+        <button className={styles.button} onClick={handleLogout}>
           Logout
         </button>
         <img src="/person.png" alt="user profile" className={styles.userImage} />

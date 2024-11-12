@@ -1,24 +1,22 @@
+'use client';
+
 import React from 'react';
 import styles from './RecommendationCard.module.css';
 
-interface Recommendation {
-  vibes: string;
-  genre: string;
-  artist: string;
-  popularity: number;
-}
-
 interface RecommendationCardProps {
-  recommendation: Recommendation;
+  artist: string;
+  genre: string;
+  vibes: string;
+  popularity: string;
 }
 
-const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation }) => {
+const RecommendationCard: React.FC<RecommendationCardProps> = ({ artist, genre, vibes, popularity }) => {
   return (
     <div className={styles.card}>
-      <h3>{recommendation.artist}</h3>
-      <p>Vibes: {recommendation.vibes}</p>
-      <p>Genre: {recommendation.genre}</p>
-      <p>Popularity: {recommendation.popularity}/10</p>
+      <h3>{artist}</h3>
+      <p><strong>Genre:</strong> {genre}</p>
+      <p><strong>Vibes:</strong> {vibes}</p>
+      <p><strong>Popularity:</strong> {popularity}</p>
     </div>
   );
 };

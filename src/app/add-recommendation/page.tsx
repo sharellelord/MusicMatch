@@ -1,21 +1,36 @@
 'use client';
 
 import React from 'react';
-import Header from '@/app/components/Header';
-import AddRecommendationForm from '@/app/add-recommendation/AddRecommendationForm';
+import AddRecommendationForm from './AddRecommendationForm';
+import RecommendationCard from './RecommendationCard';
 import LoggedInHeader from './LoggedInHeader';
+import styles from './AddRecommendationPage.module.css';
 
 const AddRecommendationPage: React.FC = () => {
   return (
-    <div className="page-container">
-      {/* Render the Header component */}
+    <>
       <LoggedInHeader />
-
-      {/* Render the AddRecommendationForm component */}
-      <main className="content">
-        <AddRecommendationForm />
-      </main>
-    </div>
+      <div className={styles['page-container']}>
+        <div className={styles['form-container']}>
+          <AddRecommendationForm />
+        </div>
+        <div className={styles['cards-container']}>
+          {/* Example hardcoded recommendation cards */}
+          <RecommendationCard
+            artist="Tame Impala"
+            genre="Psychedelic Rock"
+            vibes="Chill, Trippy"
+            popularity="9"
+          />
+          <RecommendationCard
+            artist="Frank Ocean"
+            genre="R&B"
+            vibes="Smooth, Emotional"
+            popularity="10"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

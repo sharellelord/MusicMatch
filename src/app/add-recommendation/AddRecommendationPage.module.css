@@ -1,0 +1,24 @@
+.page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #371F1F;
+    padding: 40px;
+    min-height: 100vh;
+  }
+  
+  .form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+  }
+  
+  .cards-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+  }
+  

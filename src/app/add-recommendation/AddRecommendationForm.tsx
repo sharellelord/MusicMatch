@@ -1,86 +1,82 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
-import RecommendationCard from '@/app/add-recommendation/RecommendationCard';
-
-interface Recommendation {
-  vibes: string;
-  genre: string;
-  artist: string;
-  popularity: number;
-}
+import styles from './AddRecommendationForm.module.css';
 
 const AddRecommendationForm: React.FC = () => {
-  const [vibes, setVibes] = useState('');
-  const [genre, setGenre] = useState('');
-  const [artist, setArtist] = useState('');
-  const [popularity, setPopularity] = useState(5);
-  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [formData, setFormData] = useState({
+    vibes: '',
+    genre: '',
+    artist: '',
+    popularity: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newRecommendation: Recommendation = {
-      vibes,
-      genre,
-      artist,
-      popularity,
-    };
-    setRecommendations([...recommendations, newRecommendation]);
-    setVibes('');
-    setGenre('');
-    setArtist('');
-    setPopularity(5);
+    
+    console.group('Submitted Form Data');
+    console.log('Vibes:', formData.vibes);
+    console.log('Genre:', formData.genre);
+    console.log('Artist:', formData.artist);
+    console.log('Popularity:', formData.popularity);
+    console.groupEnd();
+
+    setFormData({ vibes: '', genre: '', artist: '', popularity: '' });
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit} className="form">
+    <div className={styles['form-card']}>
+      <h2 className="form-title">Find your Music Match</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="vibes">Vibes</label>
         <input
           type="text"
-          placeholder="Vibes"
-          value={vibes}
-          onChange={(e) => setVibes(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Genre"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Artist"
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
+          id="vibes"
+          name="vibes"
+          value={formData.vibes}
+          onChange={handleChange}
+          required
         />
 
-        {/* Popularity Slider */}
-        <div className="slider-container">
-          <label htmlFor="popularity" className="slider-label">
-            Popularity: {popularity}
-          </label>
-          <input
-            type="range"
-            id="popularity"
-            min="1"
-            max="10"
-            value={popularity}
-            onChange={(e) => setPopularity(Number(e.target.value))}
-            className="slider"
-          />
-        </div>
+        <label htmlFor="genre">Genre</label>
+        <input
+          type="text"
+          id="genre"
+          name="genre"
+          value={formData.genre}
+          onChange={handleChange}
+          required
+        />
 
-        <button type="submit">Add Recommendation</button>
+        <label htmlFor="artist">Artist</label>
+        <input
+          type="text"
+          id="artist"
+          name="artist"
+          value={formData.artist}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="popularity">Popularity (1-10)</label>
+        <input
+          type="number"
+          id="popularity"
+          name="popularity"
+          value={formData.popularity}
+          onChange={handleChange}
+          min="1"
+          max="10"
+          required
+        />
+
+        <button type="submit" className={styles['submit-button']}>Submit</button>
       </form>
-
-      <div className="cards">
-        {recommendations.length === 0 && (
-          <p className="no-recommendations">No recommendations yet</p>
-        )}
-        {recommendations.map((rec, index) => (
-          <RecommendationCard key={index} recommendation={rec} />
-        ))}
-      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
 import styles from './AddItemComponent.module.css';
@@ -12,8 +12,7 @@ interface FormData {
 }
 
 const AddItemComponent: React.FC = () => {
-
-    const router = useRouter();
+  const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
     playlistName: '',
@@ -22,7 +21,6 @@ const AddItemComponent: React.FC = () => {
     tags: ''
   });
 
-  // Create a ref for the file input
   const imageInputRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +44,6 @@ const AddItemComponent: React.FC = () => {
     e.preventDefault();
     console.log(formData);
 
-
     // Reset form data
     setFormData({
       playlistName: '',
@@ -55,15 +52,17 @@ const AddItemComponent: React.FC = () => {
       tags: ''
     });
 
-    // Clear the file input using the ref
     if (imageInputRef.current) {
       imageInputRef.current.value = '';
     }
   };
 
   const handleLogout = () => {
-    // Route to the home page on logout
     router.push('/');
+  };
+
+  const handleGoToMusicMatch = () => {
+    router.push('/add-recommendation');
   };
 
   return (
@@ -74,8 +73,13 @@ const AddItemComponent: React.FC = () => {
         </div>
         <h1>MusicMatch</h1>
         <div className={styles['user-profile']}>
-          <button className={styles['logout-button']}  onClick={handleLogout}> Logout</button>
-          <img src="person.png" alt="user profile" className={styles['user-image']} />
+          <button className={styles['action-button']} onClick={handleGoToMusicMatch}>
+            Go to Music Match
+          </button>
+          <button className={styles['action-button']} onClick={handleLogout}>
+            Logout
+          </button>
+          <img src="/person.png" alt="user profile" className={styles['user-image']} />
         </div>
       </header>
       <div className={styles['create-playlist']}>
@@ -122,7 +126,7 @@ const AddItemComponent: React.FC = () => {
                 onChange={handleChange}
               />
             </div>
-            <button type="submit">Create!</button>
+            <button type="submit" className={styles['submit-button']}>Create!</button>
           </form>
           <div className={styles['playlist-image']}>
             <img src="/headphones.png" alt="headphones" />

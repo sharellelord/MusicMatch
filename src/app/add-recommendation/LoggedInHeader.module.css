@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: -20px 0;
+    background-color: #371F1F;
+    padding: 0px 20px;
   }
   
   .logo img {
@@ -12,25 +13,31 @@
   }
   
   .header h1 {
-    margin-left: 90px;
+    color: #ffffff;
     font-size: 60px;
     font-family: 'Brush Script MT', cursive;
     font-weight: lighter;
+    margin-left: 20px;
   }
   
   .userProfile {
     display: flex;
     align-items: center;
+    gap: 10px; 
   }
   
-  .logoutButton {
+  .button {
     background-color: #b25d5d;
     border: none;
     border-radius: 10px;
     color: #ffffff;
     padding: 10px 20px;
     cursor: pointer;
-    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #9a4a4a;
   }
   
   .userImage {
