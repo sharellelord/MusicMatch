@@ -5,17 +5,14 @@
   justify-content: space-between;
   color: #fff;
   width: 100%; 
-  
-
 }
 
 .logoBackground {
-  background-color: #fa7d7c;
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+
 }
 
 .logo {
@@ -23,6 +20,8 @@
   font-weight: bold;
   color: #371f1f;
   font-family: "Mountains of Christmas", serif;
+  margin-top: -20px;
+
 }
 
 .appName {
@@ -30,6 +29,7 @@
   text-align: center;
   flex: 1;
   font-family: "Mountains of Christmas", serif;
+
 }
 
 .menuIcon {
@@ -39,9 +39,35 @@
   width: 4rem;
   height: 4rem;
   cursor: pointer;
+  margin-top: -80px;
+
 }
 
 .bar {
   height: 6px;
   background-color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -20px 0;
+  margin-top: -60px;
+  margin-bottom: -25px;
+}
+
+.logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  margin-top: -20px;
+}
+
+.header h1 {
+  margin-left: 90px;
+  font-size: 60px;
+  margin-top: -20px;
+  font-family: 'Brush Script MT', cursive;
+  font-weight: lighter;
 }

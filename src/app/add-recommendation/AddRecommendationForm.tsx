@@ -77,7 +77,7 @@ const AddRecommendationForm: React.FC = () => {
           required
         />
 
-        <label htmlFor="imageUrl">image</label>
+        <label htmlFor="imageUrl">Image</label>
         <input
           type="text"
           id="imageUrl"

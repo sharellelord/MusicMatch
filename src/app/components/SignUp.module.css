@@ -10,6 +10,8 @@
   width: 100%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border: 1px solid white;
+  background-color: #E59999;
+  padding-top: 65px;  
 }
 
 .formInput {
@@ -20,22 +22,31 @@
   border-bottom: 1px solid #ccc;
   background-color: #704a4a;
   color: #fff;
+  color: black;
+  background-color: #E59999;
+
 }
 
 .formInput::placeholder {
   color: #e0e0e0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "Ranchers", sans-serif;
+  margin-bottom: 5px;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
 }
 
 .signupButton {
-  background-color: #961f1f;
-  margin-top: 1.5rem;
-  color: #fff;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: "Ranchers", sans-serif;
- 
+  display: block;
+  margin: 20px auto; /* Adjust the margin as needed */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #4a2b2b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: -15px;
 }

@@ -20,18 +20,16 @@
     width: 80%;
     max-width: 500px;
     gap: 20px;
+    
   }
   
-  .form-title {
-  color: white;
-  font-size: 15;
-  margin-bottom: 10px;
-  text-align: center;
-}
 
   .form-card label {
     font-weight: bold;
-    color: white;
+    font-size: 18px;
+    margin-bottom: -12px;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
   }
   
   .form-card input,
@@ -40,6 +38,7 @@
     border-radius: 5px;
     border: 2px solid #b25d5d;
     width: 100%;
+    margin-bottom: 5px;
   }
   
   .submit-button {
@@ -51,9 +50,13 @@
     cursor: pointer;
     align-self: center;
     margin-top: -10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   
   .submit-button:hover {
-    background-color: #3b1f1f;
+    background-color: #ac4747;
   }
   

@@ -4,6 +4,8 @@
     align-items: center;
     background-color: #371F1F;
     padding: 0px 20px;
+    margin-top: -20px;
+    margin-bottom: -60px;
   }
   
   .logo img {
@@ -17,7 +19,7 @@
     font-size: 60px;
     font-family: 'Brush Script MT', cursive;
     font-weight: lighter;
-    margin-left: 20px;
+    margin-left: 225px;
   }
   
   .userProfile {

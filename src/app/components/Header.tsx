@@ -6,7 +6,9 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logoBackground}>
-        <span className={styles.logo}>MM</span>
+      <div className={styles.logo}>
+          <img src="/logo.png" alt="logo" />
+      </div>
       </div>
       <h1 className={styles.appName}>MusicMatch</h1>
       <div className={styles.menuIcon}>

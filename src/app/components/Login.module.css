@@ -11,15 +11,18 @@
   width: 100%; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border: 1px solid white;
+  background-color: #b25d5d;
+
 }
 .headphonesIcon {
-  width: 5rem;
+  width: 6rem;
   height: auto;
   margin-bottom: 1rem;
 }
 
 .form {
   width: 100%;
+
 }
 
 .formInput {
@@ -30,21 +33,32 @@
   border-bottom: 1px solid #ccc;
   background-color: #c56262;
   color: #fff;
+  background-color: #b25d5d;
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  font-family: "Ranchers", sans-serif;
+  margin-bottom: 5px;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
+
 }
 
 .formInput::placeholder {
   color: #e0e0e0;
-  font-size: 1.5rem;
   font-family: "Ranchers", sans-serif;
 }
 
 .loginButton {
-  background-color: #961f1f;
-  margin-top: 2.2rem;
-  color: #fff;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-family: "Ranchers", sans-serif;
+  display: block;
+  margin: 20px auto; /* Adjust the margin as needed */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #4a2b2b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: -15px;
 }
