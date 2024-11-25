@@ -33,6 +33,18 @@ padding: 2rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap; 
+
+  select {
+  background-color: #ffffff;
+  border-color:  #b25d5d;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 504px;
+}
+
   gap: 1rem; 
   margin-top: 2rem;
 }
