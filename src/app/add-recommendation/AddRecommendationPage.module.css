@@ -1,64 +1,62 @@
-.page-container {
+.form-card {
+    background-color: #E59999;
+    padding: 0px;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #371F1F;
-    min-height: 100vh;
-    padding: 40px;
-  }
-  
-  .form-container {
-    flex: 1;
-    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items:center;
-    margin-right: 40px;
-    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    font-family: 'Arial', sans-serif;
   }
   
-  .cards-container {
-    flex: 1;
+  .form-card form {
     display: flex;
     flex-direction: column;
-    gap: 30px; 
+    width: 80%;
+    max-width: 500px;
+    gap: 20px;
+    
   }
+  
 
-  .scrollable-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid #fff;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.scrollable-menus {
-  flex: 1; /* Right column takes less space */
-  display: flex;
-  flex-direction: column; /* Stack the scroll menus vertically */
-  gap: 1rem;
-}
-
-
-.scrollable-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.section-title {
-    font-size: 1.5rem;
+  .form-card label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: -12px;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
+  }
+  
+  .form-card input,
+  .form-card textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #b25d5d;
+    width: 95%;
     margin-bottom: 5px;
-    color: #fff;
-    font-family: Arial, sans-serif;
   }
-
-.separator {
-    height: 2px;
-    background-color: #ccc;
-    margin: 1rem 0;
-}
-
+  
+  .submit-button {
+    background-color: #4a2b2b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: -10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .submit-button:hover {
+    background-color: #ac4747;
+  }
+  
