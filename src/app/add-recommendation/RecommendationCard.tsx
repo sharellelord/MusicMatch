@@ -17,7 +17,7 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ imageUrl, artis
   return (
     <div className={styles.card}>
       <Image
-        className={styles.userImg}
+        className={styles['img-Adjust']}
         src={imageUrl}
         alt={`${artist} avatar`}
         width={100}
