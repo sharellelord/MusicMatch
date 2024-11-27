@@ -1,136 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #371F1F;
+  min-height: 100vh
+}
+
 .create-playlist-container {
-    background-color: #371f1f;
-    height: 110vh;
-    padding: 0 20px;
-    color: #ffffff;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;  
-    margin: -20px 0;
-  }
-  
-  .logo img {
-    height: 50px;
-    width: 50px;
-    border-radius: 10px;
-  }
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  background-color: #371F1F;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -20px 0;
+}
+
+.logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  margin-left:45%;
+}
+
+.header h1 {
+  font-size: 60px;
+  font-family: 'Brush Script MT', cursive;
+  font-weight: lighter;
+  margin-left: 225px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-right:2%;
+  margin-left: 2%;
+}
 
 
-  
-  .header h1 {
-    margin-left: 110px;
-    font-size: 60px;
-    font-family: 'Brush Script MT', cursive;
-    font-weight: lighter;
-    margin-left: 225px;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logout-button {
-    background-color: #b25d5d;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .user-image {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    border: 2px solid white;
-  }
-  
-  .create-playlist {
-    background-color: #ffc8c8;
-    border-radius: 15px;
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid white;
-    background-color: #E59999;
-    color: black;
-  }
-  
-  .create-playlist2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-wrap: nowrap;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-    width: 100%;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-size: 18px;
-    color: #ffffff;
-    text-shadow: -1px -1px 0 #3b3b3b, 1px -1px 0 #3b3b3b, -1px 1px 0 #3b3b3b, 1px 1px 0 #3b3b3b;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #e36464;
-  }
-  
-  .start-here {
-    color: red;
-    font-size: 12px;
-    display: block;
-  }
-  
-  .action-button {
-    background-color: #b25d5d;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-  }
-  
-  
-  .action-button:hover {
-    background-color: #9a4a4a;
-  }
-  
-  .playlist-image {
-    width: 35%;
-    padding: 0 20px;
-    margin-left: 120px;
-  }
-  
-  .playlist-image img {
-    max-width: 100%;
-    border-radius: 10px;
-  }
+.logout-button {
+  background-color: #b25d5d;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
-  .submit-button {
+.user-image {
+  height: 50px;
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid white;
+  
+
+}
+
+.create-playlist {
+  background-color: #ffc8c8;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid white;
+  background-color: #E59999;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.playlist-form {
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #e36464;
+}
+
+.start-here {
+  color: red;
+  font-size: 12px;
   display: block;
-  margin: 20px auto; /* Adjust the margin as needed */
+}
+
+.action-button {
+  background-color: #9a4a4a;
+  border: none;
+  margin-right:5%;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #9a4a4a;
+}
+
+.submit-button {
+  display: block;
+  margin: 20px auto;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
@@ -139,9 +133,94 @@
   color: white;
   border: none;
   border-radius: 5px;
-  
 }
 
 .submit-button:hover {
   background-color: #ac4747;
 }
+
+/* My Playlists section */
+.my-playlists {
+  margin-top: 60px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #3c2b2b; /* Make sure background color matches */
+  border-radius: 10px;
+  background-color: #ffc8c8;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid white;
+  background-color: #E59999;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.playlist-card {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+}
+
+.playlist-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playlist-image {
+  width: 70px;
+  height: 70px;
+  margin-bottom: -15px;
+}
+
+.playlist-card h3 {
+  font-size: 19px;
+  margin: 0;
+}
+
+.songs-list p,
+.tags-list p {
+  margin: 0;
+  font-size: 14px;
+}
+
+
+/* Add a style for the song input and list */
+.songs-list p {
+  margin: 5px 0;
+}
+
+.add-song-button {
+  margin-top: 10px;
+  background-color: #4a2b2b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 20%;
+  align-self: center;
+}
+
+.add-song-button:hover {
+  background-color: #ac4747;
+}
+
+/* The songs list displayed below the song input */
+.songs-list {
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+

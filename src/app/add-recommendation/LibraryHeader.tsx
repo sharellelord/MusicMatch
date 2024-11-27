@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import styles from './LoggedInHeader.module.css';
+import styles from './LibraryHeader.module.css';
 
 const LoggedInHeader: React.FC = () => {
   const router = useRouter();
@@ -16,7 +16,7 @@ const LoggedInHeader: React.FC = () => {
   };
 
   const handleLibrary = () => {
-    router.push('/library');
+    router.push('/add-recommendation');
   };
 
   return (
@@ -27,7 +27,7 @@ const LoggedInHeader: React.FC = () => {
       <h1>MusicMatch</h1>
       <div className={styles.userProfile}>
       <button className={styles.button} onClick={handleLibrary}>
-          View Artist Library
+          Go to Music Match
         </button>
         <button className={styles.button} onClick={handleAddPlaylist}>
           Add Playlist

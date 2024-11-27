@@ -1,0 +1,53 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #371F1F;
+  }
+  
+  .form-container {
+    margin-bottom: 20px;
+  }
+  
+  .lists-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    align-self: center;
+  }
+  
+  .list {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .scrollable-section {
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  
+  .scrollable-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Add spacing between the artist cards */
+  .list > * {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  /* Optional: Add padding inside the RecommendationCard component */
+  .recommendation-card {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
