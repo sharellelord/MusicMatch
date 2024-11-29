@@ -12,6 +12,7 @@
   border: 1px solid white;
   background-color: #E59999;
   padding-top: 65px;  
+  margin-right: 10px;
 }
 
 .formInput {
@@ -20,10 +21,10 @@
   margin-top: 1rem;
   border: none;
   border-bottom: 1px solid #ccc;
-  background-color: #704a4a;
   color: #fff;
-  color: black;
   background-color: #E59999;
+  font-size: 1.2rem;
+  font-family: "Ranchers", sans-serif;
 
 }
 
@@ -39,7 +40,7 @@
 
 .signupButton {
   display: block;
-  margin: 20px auto; /* Adjust the margin as needed */
+  margin: 20px auto; 
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
@@ -48,5 +49,17 @@
   color: white;
   border: none;
   border-radius: 5px;
-  margin-bottom: -15px;
+  margin-bottom: 15px;
+}
+
+.errorMessage {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;  
+  text-align: center;  
+  width: 80%;  
+  max-width: 400px;  
+  margin: 1rem auto;  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }

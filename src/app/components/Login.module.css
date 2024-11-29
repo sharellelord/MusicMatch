@@ -12,6 +12,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border: 1px solid white;
   background-color: #b25d5d;
+  margin-left: 10px;
 
 }
 .headphonesIcon {
@@ -51,7 +52,7 @@
 
 .loginButton {
   display: block;
-  margin: 20px auto; /* Adjust the margin as needed */
+  margin: 57px auto; 
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
@@ -60,5 +61,17 @@
   color: white;
   border: none;
   border-radius: 5px;
-  margin-bottom: -15px;
+  margin-bottom: 15px;
+}
+
+.errorMessage {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;  
+  text-align: center; 
+  width: 80%; 
+  max-width: 400px;  
+  margin: 1rem auto; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
 }

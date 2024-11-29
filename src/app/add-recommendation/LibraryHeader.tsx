@@ -3,11 +3,13 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './LibraryHeader.module.css';
+import { signOut } from 'next-auth/react';
 
 const LoggedInHeader: React.FC = () => {
   const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
     router.push('/');
   };
 

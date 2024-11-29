@@ -3,6 +3,7 @@
 import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from 'react';
 import styles from './AddItemComponent.module.css';
 import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 
 interface FormData {
   playlistName: string;
@@ -106,7 +107,8 @@ const AddItemComponent: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
     router.push('/');
   };
 

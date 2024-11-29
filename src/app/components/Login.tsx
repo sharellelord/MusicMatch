@@ -1,33 +1,70 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation'; 
-import styles from './Login.module.css';
-
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import styles from "./Login.module.css";
 
 const Login = () => {
-
   const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form validation/signup logic goes here
 
-    // Goes to reccomendation page
-    router.push('/add-recommendation');
+    if (!username || !password) {
+      setError('All fields are required.');
+      return;
+    }
+
+    try {
+      const res = await signIn("credentials", {
+        username,
+        password,
+        redirect: false,
+      });
+
+      console.log(res);
+      if (res?.error) {
+        setError("Wrong username or password");
+        return;
+      } 
+
+      router.push("/add-recommendation");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className={`card ${styles.loginCard}`}>
-      <img src="https://png.pngtree.com/png-vector/20240903/ourmid/pngtree-rainbow-headphones-music-clipart-illustration-png-image_13743867.png" alt="Headphones" className={styles.headphonesIcon} />
-      <form className={styles.form} onSubmit={handleSubmit} >
-        <input className={styles.formInput} type="text" placeholder="Username" />
-        <input className={styles.formInput} type="password" placeholder="Password" />
-        <button type="submit" className={`button ${styles.loginButton}`}>Log In</button>
+      <img
+        src="headphones.png"
+        alt="Headphones"
+        className={styles.headphonesIcon}
+      />
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          className={styles.formInput}
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          placeholder="Username"
+        />
+        <input
+          className={styles.formInput}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="Password"
+        />
+        <button type="submit" className={`button ${styles.loginButton}`}>
+          Log In
+        </button>
+        {error && <div className={styles.errorMessage}>{error}</div>}
       </form>
     </div>
   );
-}
+};
 
 export default Login;
