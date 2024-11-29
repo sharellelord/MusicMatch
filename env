@@ -1,0 +1,3 @@
+MONGODB_URI=mongodb+srv://sal77130:E9bH6l1JTDSFq9hM@cluster1.ia71x.mongodb.net/musicmatch
+NEXTAUTH_SECRET=dscdgffynhfgnihm
+NEXTAUTH_URL=http://localhost:3000
