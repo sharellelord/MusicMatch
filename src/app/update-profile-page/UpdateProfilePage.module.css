@@ -1,0 +1,80 @@
+.update-profile-container {
+    background-color: #E59999;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid white;
+    color: black;
+  }
+  
+  .profile-form {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  
+  .input-field {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #e36464;
+  }
+  
+  .bio-field {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #e36464;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    background-color: #4a2b2b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #ac4747;
+  }
+  
+  .pageContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #371F1F; 
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .formContainer {
+    margin-top: 50px; /* Adds space between the header and the form */
+    width: 100%;
+  }

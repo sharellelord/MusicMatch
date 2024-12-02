@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #371F1F;
+    padding: 0px 20px;
+    margin-top: -20px;
+    margin-bottom: -60px;
+  }
+  
+  .logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+  }
+  
+  .header h1 {
+    color: #ffffff;
+    font-size: 60px;
+    font-family: 'Brush Script MT', cursive;
+    font-weight: lighter;
+    margin-left: 225px;
+  }
+  
+  .userProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .button {
+    background-color: #b25d5d;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #9a4a4a;
+  }
+  
+  .userImage {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  

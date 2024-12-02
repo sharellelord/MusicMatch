@@ -4,6 +4,7 @@ import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from 'reac
 import styles from './AddItemComponent.module.css';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
+import Link from 'next/link';
 
 interface FormData {
   playlistName: string;
@@ -134,7 +135,16 @@ const AddItemComponent: React.FC = () => {
           <button className={styles['action-button']} onClick={handleLogout}>
             Logout
           </button>
-          <img src="/person.png" alt="user profile" className={styles['user-image']} />
+          <Link href="/update-profile-page">
+            <div style={{ width: '50px', height: '50px', borderRadius: '50%' }}>
+              <img 
+                src="/person.png" 
+                alt="user profile" 
+                className={styles['user-image']}
+                style={{ width: '100%', height: '100%'}} 
+              />
+            </div>
+          </Link>
         </div>
       </header>
 

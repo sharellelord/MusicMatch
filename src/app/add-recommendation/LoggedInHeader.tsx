@@ -4,6 +4,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './LoggedInHeader.module.css';
 import { signOut } from 'next-auth/react';
+import Link from 'next/link';
 
 const LoggedInHeader: React.FC = () => {
   const router = useRouter();
@@ -37,7 +38,14 @@ const LoggedInHeader: React.FC = () => {
         <button className={styles.button} onClick={handleLogout}>
           Logout
         </button>
-        <img src="/person.png" alt="user profile" className={styles.userImage} />
+        <Link href="/update-profile-page">
+          <img
+            src="/person.png"
+            alt="user profile"
+            className={styles.userImage}
+            style={{ cursor: 'pointer' }} // Add pointer cursor for clarity
+          />
+        </Link>
       </div>
     </header>
   );
