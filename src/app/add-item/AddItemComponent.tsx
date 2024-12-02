@@ -32,14 +32,14 @@ const AddItemComponent: React.FC = () => {
   });
 
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
-  const [isClient, setIsClient] = useState(false); // State to track client-side rendering
+  const [isClient, setIsClient] = useState(false); 
 
   const imageInputRef = useRef<HTMLInputElement>(null);
 
-  // Prevent hydration issues by ensuring this effect runs only on the client side
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsClient(true); // Set the state once the component is mounted on the client
+      setIsClient(true); 
       const storedPlaylists = localStorage.getItem('playlists');
       if (storedPlaylists) {
         setPlaylists(JSON.parse(storedPlaylists));
@@ -117,7 +117,7 @@ const AddItemComponent: React.FC = () => {
   };
 
   if (!isClient) {
-    return null; // Render nothing or a loading state until the component is mounted on the client
+    return null; 
   }
 
   return (

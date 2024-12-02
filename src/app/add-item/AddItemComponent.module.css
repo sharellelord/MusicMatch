@@ -147,7 +147,7 @@ body {
   flex-direction: column;
   gap: 20px;
   padding: 20px;
-  background-color: #3c2b2b; /* Make sure background color matches */
+  background-color: #3c2b2b; /* Making sure background color matches */
   border-radius: 10px;
   background-color: #ffc8c8;
   border-radius: 15px;
@@ -196,7 +196,7 @@ body {
 }
 
 
-/* Add a style for the song input and list */
+/* for the song input and list */
 .songs-list p {
   margin: 5px 0;
 }
