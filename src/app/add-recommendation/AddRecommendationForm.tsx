@@ -25,36 +25,44 @@ const AddRecommendationForm: React.FC = () => {
     setIsLoading(true);
     setErrorMessage(null);
     setSuccessMessage(null);
-
+  
     // Check if all required fields are filled
     if (!formData.vibes || !formData.genre || !formData.artist || !formData.popularity) {
-      setErrorMessage('Please fill in all required fields.');
+      setErrorMessage("Please fill in all required fields.");
       setIsLoading(false);
       return;
     }
-
+  
     try {
-      const response = await fetch('/api/artist', {
-        method: 'POST',
+      // Make the POST request to add the artist
+      const response = await fetch(`/api/artist`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
+  
+      // Handle non-OK responses
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.message || 'Failed to add recommendation');
+        const errorDetails = await response.json();
+        throw new Error(errorDetails.message || "Failed to add artist recommendation.");
       }
-
+  
+      // Handle success response
       const data = await response.json();
-      setSuccessMessage('Recommendation added successfully!');
-      console.log('Added recommendation:', data);
-
+      console.log("Recommendation added successfully:", data);
+      setSuccessMessage("Recommendation added successfully!");
+  
       // Reset the form
-      setFormData({ vibes: '', genre: '', artist: '', imageUrl: '', popularity: '1' });
+      setFormData({ vibes: "", genre: "", artist: "", imageUrl: "", popularity: "1" });
+
+      window.location.reload();
+
+      
     } catch (error: any) {
-      setErrorMessage(error.message || 'Something went wrong.');
+      console.error("Error adding recommendation:", error.message);
+      setErrorMessage(error.message || "Something went wrong.");
     } finally {
       setIsLoading(false);
     }

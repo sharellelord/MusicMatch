@@ -4,7 +4,7 @@ const artistSchema = new Schema(
   {
     _id: {
         type: String,
-        required: true,
+        required: false,
       },
     vibes: {
       type: String,

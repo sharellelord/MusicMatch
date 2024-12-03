@@ -5,20 +5,24 @@ import { NextRequest } from "next/server";
 
 
 export async function POST(request: NextRequest) {
-    const { vibes, genre, artist, popularity, imageUrl } = await request.json();
+  try {
+    const body = await request.json();
+    console.log("Incoming request body:", body);
 
     // Connect to MongoDB
     await connectMongoDB();
+    console.log("Connected to MongoDB");
 
-    try {
-        // Create a new artist recommendation
-        const newArtist = await Artist.create({ vibes, genre, artist, popularity, imageUrl });
-        return NextResponse.json({ message: "Recommendation added", artist: newArtist }, { status: 201 });
-    } catch (error) {
-        console.error("Error adding recommendation:", error);
-        return NextResponse.json({ message: "Failed to add recommendation"}, { status: 500 });
-    }
-} 
+    // Create a new artist recommendation
+    const newArtist = await Artist.create(body);
+    console.log("New artist created:", newArtist);
+
+    return NextResponse.json({ message: "Recommendation added", artist: newArtist }, { status: 201 });
+  } catch (error) {
+    console.error("Error adding recommendation:", error);
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+  }
+}
 
 export async function GET() {
   try {
