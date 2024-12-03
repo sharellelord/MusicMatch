@@ -36,6 +36,25 @@ const AddRecommendationPage: React.FC = () => {
     fetchArtists();
   }, []);
 
+  const handleDeleteArtist = async (id: string) => {
+    try {
+      const response = await fetch(`/api/artist/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        const errorDetails = await response.json();
+        throw new Error(errorDetails.message || 'Failed to delete artist');
+      }
+
+      alert('Artist deleted successfully');
+      window.location.reload();
+    } catch (error: any) {
+      console.error('Error deleting artist:', error.message);
+      alert(error.message || 'Something went wrong while deleting the artist');
+    }
+  };
+
   return (
     <>
       <LoggedInHeader />
@@ -49,12 +68,13 @@ const AddRecommendationPage: React.FC = () => {
             <div className={styles['scrollable-content']}>
               {addedArtists.map((artist) => (
                 <RecommendationCard
-                  key={artist._id}
+                  _id={artist._id}
                   imageUrl={artist.imageUrl}
                   artist={artist.artist}
                   genre={artist.genre}
                   vibes={artist.vibes}
                   popularity={artist.popularity}
+                  onDelete={handleDeleteArtist}
                 />
               ))}
             </div>

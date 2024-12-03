@@ -4,17 +4,23 @@ import React from 'react';
 import styles from './RecommendationCard.module.css';
 import Image from 'next/image';
 
-
 interface RecommendationCardProps {
-  key: string;
+  _id: string; // ID of the artist
   imageUrl: string;
   artist: string;
   genre: string;
   vibes: string;
   popularity: string;
+  onDelete: (id: string) => void; // Callback function for deleting the artist
 }
 
-const RecommendationCard: React.FC<RecommendationCardProps> = ({ imageUrl, artist, genre, vibes, popularity }) => {
+const RecommendationCard: React.FC<RecommendationCardProps> = ({ _id, imageUrl, artist, genre, vibes, popularity, onDelete }) => {
+  const handleDelete = async () => {
+    if (confirm(`Are you sure you want to delete ${artist}?`)) {
+      await onDelete(_id); // Trigger the delete action passed from the parent
+    }
+  };
+
   return (
     <div className={styles.card}>
       <Image
@@ -29,6 +35,9 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ imageUrl, artis
       <p><strong>Genre:</strong> {genre}</p>
       <p><strong>Vibes:</strong> {vibes}</p>
       <p><strong>Popularity:</strong> {popularity}</p>
+      <button className={styles['delete-button']} onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 };
