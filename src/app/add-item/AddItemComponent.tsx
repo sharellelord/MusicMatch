@@ -4,7 +4,6 @@ import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from 'reac
 import styles from './AddItemComponent.module.css';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import Link from 'next/link';
 
 interface FormData {
   playlistName: string;
@@ -29,22 +28,18 @@ const AddItemComponent: React.FC = () => {
     image: null,
     songInput: '',
     songs: [],
-    tags: ''
+    tags: '',
   });
 
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
-  const [isClient, setIsClient] = useState(false); 
+  const [searchResults, setSearchResults] = useState<any[]>([]); // Store iTunes search results
 
   const imageInputRef = useRef<HTMLInputElement>(null);
 
-  
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsClient(true); 
-      const storedPlaylists = localStorage.getItem('playlists');
-      if (storedPlaylists) {
-        setPlaylists(JSON.parse(storedPlaylists));
-      }
+    const storedPlaylists = localStorage.getItem('playlists');
+    if (storedPlaylists) {
+      setPlaylists(JSON.parse(storedPlaylists));
     }
   }, []);
 
@@ -52,7 +47,7 @@ const AddItemComponent: React.FC = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -60,20 +55,37 @@ const AddItemComponent: React.FC = () => {
     if (e.target.files && e.target.files[0]) {
       setFormData({
         ...formData,
-        image: e.target.files[0]
+        image: e.target.files[0],
       });
     }
   };
 
-  const handleAddSong = () => {
-    if (formData.songInput) {
-      const updatedSongs = [...formData.songs, formData.songInput];
-      setFormData({
-        ...formData,
-        songs: updatedSongs,
-        songInput: ''
-      });
+  const searchiTunes = async (query: string) => {
+    try {
+      const response = await fetch(
+        `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song`
+      );
+      const data = await response.json();
+      setSearchResults(data.results);
+    } catch (error) {
+      console.error('Error searching iTunes:', error);
     }
+  };
+
+  const handleSongSearch = async () => {
+    if (formData.songInput) {
+      await searchiTunes(formData.songInput);
+    }
+  };
+
+  const handleAddSong = (song: any) => {
+    const updatedSongs = [...formData.songs, `${song.trackName} by ${song.artistName}`];
+    setFormData({
+      ...formData,
+      songs: updatedSongs,
+      songInput: '',
+    });
+    setSearchResults([]); // Clear search results after adding a song
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -88,7 +100,7 @@ const AddItemComponent: React.FC = () => {
       playlistName: formData.playlistName,
       imageUrl: formData.image ? URL.createObjectURL(formData.image) : '/headphones.png',
       songs: formData.songs,
-      tags: formData.tags
+      tags: formData.tags,
     };
 
     const updatedPlaylists = [...playlists, newPlaylist];
@@ -100,7 +112,7 @@ const AddItemComponent: React.FC = () => {
       image: null,
       songInput: '',
       songs: [],
-      tags: ''
+      tags: '',
     });
 
     if (imageInputRef.current) {
@@ -117,10 +129,6 @@ const AddItemComponent: React.FC = () => {
     router.push('/add-recommendation');
   };
 
-  if (!isClient) {
-    return null; 
-  }
-
   return (
     <div className={styles['create-playlist-container']}>
       <header className={styles.header}>
@@ -135,16 +143,7 @@ const AddItemComponent: React.FC = () => {
           <button className={styles['action-button']} onClick={handleLogout}>
             Logout
           </button>
-          <Link href="/update-profile-page">
-            <div style={{ width: '50px', height: '50px', borderRadius: '50%' }}>
-              <img 
-                src="/person.png" 
-                alt="user profile" 
-                className={styles['user-image']}
-                style={{ width: '100%', height: '100%'}} 
-              />
-            </div>
-          </Link>
+          <img src="/person.png" alt="user profile" className={styles['user-image']} />
         </div>
       </header>
 
@@ -174,27 +173,42 @@ const AddItemComponent: React.FC = () => {
           </div>
 
           <div className={styles['form-group']}>
-  <label htmlFor="songInput">Add a Song</label>
-  <input
-    type="text"
-    id="songInput"
-    name="songInput"
-    value={formData.songInput}
-    onChange={handleChange}
-  />
-  <button type="button" onClick={handleAddSong} className={styles['add-song-button']}>
-    Add Song
-  </button>
-  <div className={styles['songs-list']}>
-    {formData.songs.map((song, index) => (
-      <p key={index}>{song}</p>
-    ))}
-  </div>
-</div>
+            <label htmlFor="songInput">Search for a Song</label>
+            <input
+              type="text"
+              id="songInput"
+              name="songInput"
+              value={formData.songInput}
+              onChange={handleChange}
+            />
+            <button
+              type="button"
+              onClick={handleSongSearch}
+              className={styles['add-song-button']}
+            >
+              Search
+            </button>
+          </div>
 
+          <div className={styles['search-results']}>
+            {searchResults.map((song, index) => (
+              <div key={index} className={styles['search-result']} onClick={() => handleAddSong(song)}>
+                <p>
+                  {song.trackName} by {song.artistName}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles['songs-list']}>
+            <h3>Added Songs:</h3>
+            {formData.songs.map((song, index) => (
+              <p key={index}>{song}</p>
+            ))}
+          </div>
 
           <div className={styles['form-group']}>
-            <label htmlFor="tags">Search to Add Tags</label>
+            <label htmlFor="tags">Add Tags</label>
             <input
               type="text"
               id="tags"
@@ -204,32 +218,35 @@ const AddItemComponent: React.FC = () => {
             />
           </div>
 
-          <button type="submit" className={styles['submit-button']}>Create!</button>
+          <button type="submit" className={styles['submit-button']}>
+            Create!
+          </button>
         </form>
-        </div>
-        <div className={styles['my-playlists']}>
-          <h2>My Playlists</h2>
-          {playlists.map((playlist, index) => (
-            <div key={index} className={styles['playlist-card']}>
-              <div className={styles['playlist-card-header']}>
-                <img src={playlist.imageUrl} alt={playlist.playlistName} className={styles['playlist-image']} />
-                <h3>{playlist.playlistName}</h3>
-              </div>
-              <div className={styles['songs-list']}>
-                <p><strong>Songs:</strong></p>
-                {playlist.songs.map((song, i) => (
-                  <p key={i}>{song}</p>
-                ))}
-              </div>
-              <div className={styles['tags-list']}>
-                <p><strong>Tags:</strong></p>
-                {playlist.tags.split(',').map((tag, i) => (
-                  <p key={i}>{tag}</p>
-                ))}
-              </div>
+      </div>
+
+      <div className={styles['my-playlists']}>
+        <h2>My Playlists</h2>
+        {playlists.map((playlist, index) => (
+          <div key={index} className={styles['playlist-card']}>
+            <div className={styles['playlist-card-header']}>
+              <img src={playlist.imageUrl} alt={playlist.playlistName} className={styles['playlist-image']} />
+              <h3>{playlist.playlistName}</h3>
             </div>
-          ))}
-        </div>
+            <div className={styles['songs-list']}>
+              <p><strong>Songs:</strong></p>
+              {playlist.songs.map((song, i) => (
+                <p key={i}>{song}</p>
+              ))}
+            </div>
+            <div className={styles['tags-list']}>
+              <p><strong>Tags:</strong></p>
+              {playlist.tags.split(',').map((tag, i) => (
+                <p key={i}>{tag}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
