@@ -11,8 +11,8 @@ const authOptions: any = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
+        username: { label: "Username", type: "text" }, // username input field
+        password: { label: "Password", type: "password" }, // password input field
       },
       async authorize(credentials) {
         if (!credentials) {
@@ -22,20 +22,22 @@ const authOptions: any = {
         const { username, password } = credentials as { username: string; password: string };
 
         try {
-          await connectMongoDB();
-          const user = await User.findOne({ username });
+          await connectMongoDB(); // connect to database 
+          const user = await User.findOne({ username }); // find user by user name 
 
           if (!user) {
             console.log("User not found");
             return null;
           }
 
-          const passwordsMatch = await bcrypt.compare(password, user.password);
+          const passwordsMatch = await bcrypt.compare(password, user.password); // compare passwords
 
           if (!passwordsMatch) {
             console.log("Password mismatch");
             return null;
           }
+
+          // Return user object with necessary fields if authentication is successful
 
           return { id: user._id, name: user.username, email: user.email };
 
@@ -47,18 +49,20 @@ const authOptions: any = {
     }),
   ],
   session: {
-    strategy: 'jwt' as SessionStrategy,  
+    strategy: 'jwt' as SessionStrategy,  // use JWT for session management
   },
   callbacks: {
+    // JWT callback to add user information to token
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
+    // session callback to include token information in session
     async session({ session, token }) {
       if (token) {
-        session.userId = token.id;
+        session.userId = token.id; // attach user ID to the token
       }
       return session;
     },
@@ -67,5 +71,7 @@ const authOptions: any = {
 };
 
 const handler = NextAuth(authOptions);
+
+// Export the handler for GET and POST requests to handle authentication
 
 export { handler as GET, handler as POST };
