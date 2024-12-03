@@ -9,6 +9,7 @@
     align-items: center;
     border: 3px solid white;
     color: black;
+    font-family: 'Arial', sans-serif;
   }
   
   .profile-form {
@@ -75,6 +76,6 @@
   }
   
   .formContainer {
-    margin-top: 50px; /* Adds space between the header and the form */
+    margin-top: 50px;
     width: 100%;
   }
