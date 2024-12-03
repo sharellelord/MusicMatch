@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css';
 
-
+// header info
 function Header() {
   return (
     <header className={styles.header}>
