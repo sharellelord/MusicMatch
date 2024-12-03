@@ -30,7 +30,7 @@ export async function GET() {
     await connectMongoDB();
 
     // Fetch all artists from the database
-    const artists = await Artist.find().select("-_id -__v"); // Exclude any fields you don't want in the response
+    const artists = await Artist.find().select(" -__v"); // Exclude any fields you don't want in the response
 
     if (!artists.length) {
       return NextResponse.json({ message: "No artists found." }, { status: 404 });
