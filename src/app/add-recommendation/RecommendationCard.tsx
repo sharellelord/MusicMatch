@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 
 interface RecommendationCardProps {
+  key: string;
   imageUrl: string;
   artist: string;
   genre: string;
