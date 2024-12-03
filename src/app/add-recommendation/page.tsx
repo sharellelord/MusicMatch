@@ -21,7 +21,7 @@ const AddRecommendationPage: React.FC = () => {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await fetch('/api/recommendations');
+        const response = await fetch('/api/artist');
         if (response.ok) {
           const artists = await response.json();
           setAddedArtists(artists);
