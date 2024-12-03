@@ -9,31 +9,62 @@ const AddRecommendationForm: React.FC = () => {
     genre: '',
     artist: '',
     imageUrl: '',
-    popularity: ''
+    popularity: '1', // Set a default value for popularity
   });
+  const [isLoading, setIsLoading] = useState(false); // To handle form state
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
-    console.group('Submitted Form Data');
-    console.log('Vibes:', formData.vibes);
-    console.log('Genre:', formData.genre);
-    console.log('Artist:', formData.artist);
-    console.log('Image URL:', formData.imageUrl);
-    console.log('Popularity:', formData.popularity);
-    console.groupEnd();
+    // Check if all required fields are filled
+    if (!formData.vibes || !formData.genre || !formData.artist || !formData.popularity) {
+      setErrorMessage('Please fill in all required fields.');
+      setIsLoading(false);
+      return;
+    }
 
-    setFormData({ vibes: '', genre: '', artist: '', imageUrl: '', popularity: '1' });
+    try {
+      const response = await fetch('/api/artist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message || 'Failed to add recommendation');
+      }
+
+      const data = await response.json();
+      setSuccessMessage('Recommendation added successfully!');
+      console.log('Added recommendation:', data);
+
+      // Reset the form
+      setFormData({ vibes: '', genre: '', artist: '', imageUrl: '', popularity: '1' });
+    } catch (error: any) {
+      setErrorMessage(error.message || 'Something went wrong.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className={styles['form-card']}>
       <h2 className={styles['form-title']}>Find your Music Match</h2>
+      {successMessage && <p className={styles['success-message']}>{successMessage}</p>}
+      {errorMessage && <p className={styles['error-message']}>{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label htmlFor="vibes">Vibes</label>
         <select
@@ -116,7 +147,9 @@ const AddRecommendationForm: React.FC = () => {
           onChange={handleChange}
         />
 
-        <button type="submit" className={styles['submit-button']}>Submit</button>
+        <button type="submit" className={styles['submit-button']} disabled={isLoading}>
+          {isLoading ? 'Submitting...' : 'Submit'}
+        </button>
       </form>
     </div>
   );
