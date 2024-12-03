@@ -21,12 +21,20 @@ export async function POST(request: NextRequest) {
 } 
 
 export async function GET() {
-    try {
-      await connectMongoDB();
-      const artists = await Artist.find(); // Fetch all artists from the database
-      return NextResponse.json(artists, { status: 200 });
-    } catch (error) {
-      console.error("Error fetching artists:", error);
-      return NextResponse.json({ message: "Failed to fetch artists" }, { status: 500 });
+  try {
+    // Connect to the database
+    await connectMongoDB();
+
+    // Fetch all artists from the database
+    const artists = await Artist.find().select("-_id -__v"); // Exclude any fields you don't want in the response
+
+    if (!artists.length) {
+      return NextResponse.json({ message: "No artists found." }, { status: 404 });
     }
+
+    return NextResponse.json(artists, { status: 200 });
+  } catch (error) {
+    console.error("Error retrieving artists:", error);
+    return NextResponse.json({ message: "Error retrieving artists." }, { status: 500 });
   }
+}
